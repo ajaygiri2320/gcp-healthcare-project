@@ -45,6 +45,9 @@ with DAG(
     # Task to create bronze table
     bronze_tables = BigQueryInsertJobOperator(
         task_id="bronze_tables",
+        project_id=PROJECT_ID,
+        location=LOCATION,
+        gcp_conn_id="google_cloud_default",
         configuration={
             "query": {
                 "query": BRONZE_QUERY,
@@ -57,6 +60,9 @@ with DAG(
     # Task to create silver table
     silver_tables = BigQueryInsertJobOperator(
         task_id="silver_tables",
+        project_id=PROJECT_ID,
+        location=LOCATION,
+        gcp_conn_id="google_cloud_default",
         configuration={
             "query": {
                 "query": SILVER_QUERY,
@@ -69,6 +75,9 @@ with DAG(
     # Task to create gold table
     gold_tables = BigQueryInsertJobOperator(
         task_id="gold_tables",
+        project_id=PROJECT_ID,
+        location=LOCATION,
+        gcp_conn_id="google_cloud_default",
         configuration={
             "query": {
                 "query": GOLD_QUERY,
